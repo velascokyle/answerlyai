@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AnswerlyAI – Never Miss a Call Again</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="AnswerlyAI is an AI-powered receptionist that answers, qualifies, and routes calls so your business never misses an opportunity."
+  />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-soft: #0b1020;
+      --card: rgba(15, 23, 42, 0.92);
+      --card-stroke: rgba(148, 163, 184, 0.18);
+      --primary: #f9fafb;
+      --accent: #38bdf8;
+      --accent-2: #a855f7;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --text-muted: #9ca3af;
+      --border-soft: rgba(148, 163, 184, 0.4);
+      --radius-lg: 22px;
+      --radius-xl: 28px;
+      --shadow-soft: 0 24px 60px rgba(15, 23, 42, 0.8);
+    }
+    /* Make just the contact section header centered */
+#contact .section-header {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+}
+
+#contact .section-header .section-sub {
+  max-width: 520px;
+}
+
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.2), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.25), transparent 55%),
+        var(--bg);
+      color: var(--primary);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 80px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 16px 0;
+    }
+
+    /* NAV */
+    .nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+
+  /* more breathing room */
+  padding: 12px 28px;          /* TOP/BOTTOM 12, LEFT/RIGHT 28 */
+  column-gap: 32px;
+
+  position: sticky;
+  top: 0;
+  z-index: 20;
+
+  backdrop-filter: blur(18px);
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 23, 42, 0.92),
+    rgba(15, 23, 42, 0.78),
+    transparent
+  );
+
+  border-radius: 24px;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+}
+
+
+    .logo {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      font-weight: 700;
+      font-size: 1.18rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    #brandText {
+      white-space: nowrap;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      margin-left: 2px;
+      opacity: 0;
+    }
+
+    .cursor-active {
+      opacity: 1;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 3px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width 0.18s ease-out;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn {
+      border-radius: 999px;
+      border: 1px solid transparent;
+      padding: 8px 18px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #0b1020;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition:
+        transform 0.1s ease,
+        box-shadow 0.1s ease,
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.6);
+      white-space: nowrap;
+    }
+
+    .btn span {
+      font-size: 1.1rem;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px) translateZ(0);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+    }
+
+    .btn-outline {
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--primary);
+      border-color: rgba(148, 163, 184, 0.7);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.7);
+    }
+
+    .btn-outline:hover {
+      background: rgba(15, 23, 42, 1);
+      border-color: var(--accent);
+      box-shadow: 0 12px 26px rgba(56, 189, 248, 0.35);
+    }
+
+    /* HERO */
+    .hero-card {
+      position: relative;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.06), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.07), transparent 55%),
+        var(--card);
+      border-radius: var(--radius-xl);
+      padding: 40px 32px;
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 32px;
+      align-items: stretch;
+      border: 1px solid var(--card-stroke);
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: transform 0.22s ease-out, box-shadow 0.22s ease-out, border-color 0.18s ease-out;
+      animation: float-in 0.55s ease-out 0.1s both;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.5), rgba(168, 85, 247, 0.5));
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0.25s ease-out;
+    }
+
+    .hero-card:hover {
+      transform: translateY(-4px) translateZ(0);
+      box-shadow: 0 28px 80px rgba(15, 23, 42, 0.95);
+      border-color: rgba(148, 163, 184, 0.7);
+    }
+
+    .hero-card:hover::before {
+      opacity: 0.32;
+    }
+
+    @keyframes float-in {
+      from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.99);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 0.72rem;
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 14px;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.8);
+    }
+
+    .hero-tag-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 8px rgba(56, 189, 248, 0.7);
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 3.1vw, 2.6rem);
+      letter-spacing: -0.04em;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .hero-title span.highlight {
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 22px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .hero-metric {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .hero-metric strong {
+      color: var(--primary);
+    }
+
+    .hero-metric-pill {
+      font-size: 0.72rem;
+      border-radius: 999px;
+      padding: 3px 8px;
+      border: 1px solid rgba(148, 163, 184, 0.75);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-muted);
+    }
+
+    .hero-right {
+      border-left: 1px solid rgba(148, 163, 184, 0.3);
+      padding-left: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-demo-card {
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.1), transparent 60%),
+        rgba(15, 23, 42, 0.96);
+      border-radius: var(--radius-lg);
+      padding: 22px 20px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.85);
+    }
+
+    .hero-demo-card h3 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .hero-demo-card p {
+      font-size: 0.87rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .qr-placeholder {
+      width: 120px;
+      height: 120px;
+      border-radius: 18px;
+      border: 1px dashed rgba(148, 163, 184, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: #e5e7eb;
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.12), rgba(15, 23, 42, 0.95));
+      text-align: center;
+      padding: 6px;
+    }
+
+    .hero-bottom-strip {
+      border-top: 1px solid rgba(148, 163, 184, 0.4);
+      margin-top: 20px;
+      padding-top: 14px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* SECTION WRAPPER */
+    section {
+      margin-top: 40px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .section-sub {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 420px;
+    }
+
+    /* FEATURE CARDS */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.9));
+      border-radius: var(--radius-lg);
+      padding: 18px 18px 20px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
+      font-size: 0.9rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.2s ease-out;
+      pointer-events: none;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .pill-label {
+      display: inline-flex;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 0.7rem;
+      margin-bottom: 7px;
+      color: #e5e7eb;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 6px;
+    }
+
+    .card ul li {
+      font-size: 0.85rem;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      color: var(--text-muted);
+    }
+
+    .card ul li::before {
+      content: "•";
+      font-size: 0.9rem;
+      margin-top: -1px;
+      color: var(--accent);
+    }
+
+    /* HOW IT WORKS */
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      font-size: 0.9rem;
+    }
+
+    .how-step {
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.1), transparent 65%),
+        rgba(15, 23, 42, 0.96);
+      border-radius: var(--radius-lg);
+      padding: 16px 16px 18px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.75);
+    }
+
+    .how-step-number {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      margin-bottom: 6px;
+      background: rgba(15, 23, 42, 0.96);
+      color: var(--accent);
+    }
+
+    .how-step h3 {
+      font-size: 0.98rem;
+      margin-bottom: 4px;
+    }
+
+    .how-step p {
+      color: var(--text-muted);
+    }
+
+    /* PRICING */
+    .pricing-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .pricing-main {
+      background: radial-gradient(circle at top, rgba(168, 85, 247, 0.14), transparent 70%),
+        rgba(15, 23, 42, 0.97);
+      border-radius: var(--radius-lg);
+      padding: 20px 20px 22px;
+      border: 1px solid rgba(148, 163, 184, 0.65);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.88);
+      font-size: 0.92rem;
+    }
+
+    .pricing-main h3 {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .pricing-pill {
+      display: inline-flex;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--accent-2);
+      border: 1px solid rgba(168, 85, 247, 0.6);
+      font-size: 0.7rem;
+      margin-bottom: 7px;
+    }
+
+    .pricing-main ul {
+      margin: 10px 0 14px;
+      padding-left: 18px;
+      color: var(--text-muted);
+    }
+
+    .pricing-main li {
+      margin-bottom: 4px;
+    }
+
+    .pricing-side {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    .pricing-side strong {
+      color: var(--primary);
+    }
+
+    /* FAQ + CONTACT */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .faq-item {
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed rgba(148, 163, 184, 0.4);
+    }
+
+    .faq-item h3 {
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+
+    .faq-item p {
+      font-size: 0.87rem;
+      color: var(--text-muted);
+    }
+
+    form {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+      font-size: 0.9rem;
+      backdrop-filter: blur(14px);
+    }
+
+    form label {
+      display: block;
+      font-size: 0.8rem;
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+
+    form input,
+    form textarea,
+    form select {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      font-family: inherit;
+      font-size: 0.88rem;
+      margin-bottom: 10px;
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--primary);
+    }
+
+    form input::placeholder,
+    form textarea::placeholder {
+      color: rgba(148, 163, 184, 0.8);
+    }
+
+    form textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    form small {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* FOOTER */
+    footer {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 40px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(148, 163, 184, 0.6);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 880px) {
+      .nav {
+        border-radius: 18px;
+        padding-inline: 14px;
+      }
+
+      .hero-card {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 30px 20px;
+      }
+
+      .hero-right {
+        border-left: none;
+        border-top: 1px solid rgba(148, 163, 184, 0.4);
+        padding-left: 0;
+        padding-top: 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .pricing-wrap,
+      .faq-grid,
+      .feature-grid,
+      .how-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        padding-inline: 14px;
+      }
+
+      .hero-card {
+        border-radius: 22px;
+      }
+
+      .hero-title {
+        font-size: 1.9rem;
+      }
+
+      .hero-demo-card {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-right {
+        padding-top: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- NAV -->
+    <header class="nav">
+      <div class="logo" aria-label="AnswerlyAI">
+        <span id="brandText" data-text="AnswerlyAI">AnswerlyAI</span><span class="cursor">|</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#product">Product</a>
+        <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="#pricing" class="btn-outline btn">View pricing</a>
+        <a href="#contact" class="btn">
+          Book a demo
+          <span>↗</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <main>
+      <section>
+        <div class="hero-card">
+          <div>
+            <div class="hero-tag">
+              <span class="hero-tag-dot"></span>
+              <span>AI Receptionist • Private beta</span>
+            </div>
+            <h1 class="hero-title">
+              <span class="highlight">Never miss a call</span> again.
+            </h1>
+            <p class="hero-sub">
+              AnswerlyAI is your always-on receptionist that answers calls,
+              qualifies leads, and routes messages to the right person — so your
+              team can stay heads-down on the work that matters.
+            </p>
+            <div class="hero-ctas">
+              <a href="#contact" class="btn">Get early access</a>
+              <a href="#demo" class="btn-outline btn">Watch a sample call</a>
+            </div>
+            <div class="hero-metric">
+              <span class="hero-metric-pill">Perfect for clinics, salons & service businesses</span>
+              <span><strong>24/7</strong> coverage • <strong>0</strong> missed calls</span>
+            </div>
+          </div>
+
+          <aside class="hero-right">
+            <div class="hero-demo-card" id="demo">
+              <div>
+                <h3>Try a live demo</h3>
+                <p>
+                  Scan the QR code or click below to hear AnswerlyAI pick up a
+                  real call in under 2 rings.
+                </p>
+                <!-- Update this link with your real demo / Calendly when ready -->
+                <a href="https://your-demo-link.com" target="_blank" class="btn-outline btn">
+                  Open demo
+                </a>
+              </div>
+              <div class="qr-placeholder">
+                <img
+                  src="QR.png"
+                  alt="Scan to try the AnswerlyAI call demo"
+                  style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px;"
+                />
+              </div>              
+            <div class="hero-bottom-strip">
+              <span></span>
+              <span>Connects to your existing phone line & scheduling tools.</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- PRODUCT / FEATURES -->
+      <section id="product">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Built for busy front desks</h2>
+            <p class="section-sub">
+              AnswerlyAI handles repetitive call volume so your human
+              receptionists can focus on high-touch, human moments.
+            </p>
+          </div>
+        </div>
+        <div class="feature-grid">
+          <div class="card">
+            <div class="pill-label">Core feature</div>
+            <h3>AI call answering</h3>
+            <p>
+              A branded voice that greets callers, answers FAQs, and routes
+              calls using your rules — no awkward “robot” vibes.
+            </p>
+            <ul>
+              <li>Custom scripts tailored to your business</li>
+              <li>Multi-language support</li>
+              <li>Configured escalation rules for emergencies</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="pill-label">Workflows</div>
+            <h3>Scheduling & intake</h3>
+            <p>
+              Plug into your booking or EMR tools to capture the same details a
+              human would — no hold music or games of phone tag.
+            </p>
+            <ul>
+              <li>Appointment booking & rescheduling</li>
+              <li>Caller verification & basic triage</li>
+              <li>Automatic confirmation texts & emails</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="pill-label">Ops</div>
+            <h3>Instant call summaries</h3>
+            <p>
+              Every call becomes a clean summary your team can skim in seconds
+              instead of replaying voicemails.
+            </p>
+            <ul>
+              <li>Structured notes (reason, urgency, next steps)</li>
+              <li>Searchable history across lines & locations</li>
+              <li>Export for reporting, QA, and training</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section id="how">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">How AnswerlyAI fits into your day</h2>
+            <p class="section-sub">
+              We slot into your existing phone system and workflows — no big
+              IT project, no rip-and-replace.
+            </p>
+          </div>
+        </div>
+        <div class="how-grid">
+          <div class="how-step">
+            <div class="how-step-number">1</div>
+            <h3>We learn your playbook</h3>
+            <p>
+              You share FAQs, hours, scripts, and escalation rules. We convert
+              that into a custom AI receptionist trained on your business.
+            </p>
+          </div>
+          <div class="how-step">
+            <div class="how-step-number">2</div>
+            <h3>We plug into your phone</h3>
+            <p>
+              We connect AnswerlyAI to your current number or a new one. You
+              decide when AI answers vs. when humans pick up.
+            </p>
+          </div>
+          <div class="how-step">
+            <div class="how-step-number">3</div>
+            <h3>We launch & iterate</h3>
+            <p>
+              Go live, review transcripts, and refine scripts. Most teams see
+              fewer missed calls and faster response times in week one.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRICING -->
+      <section id="pricing">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Straightforward, early-access pricing</h2>
+            <p class="section-sub">
+              Start with one line, prove the value, then scale to more
+              locations and teams.
+            </p>
+          </div>
+        </div>
+        <div class="pricing-wrap">
+          <div class="pricing-main">
+            <div class="pricing-pill">Founding customers</div>
+            <h3>Early Access Plan</h3>
+            <p>
+              Ideal for a single clinic, salon, or office that wants to test AI
+              reception with white-glove onboarding.
+            </p>
+            <ul>
+              <li>1 phone line with AI answering</li>
+              <li>Up to X,XXX minutes / month (customizable)</li>
+              <li>Custom scripts + hands-on onboarding</li>
+              <li>Integrations with Calendly, Google Calendar & more</li>
+              <li>Direct feedback into the product roadmap</li>
+            </ul>
+            <p>
+              <strong>Pricing:</strong> We’ll scope your call volume and
+              workflows together, then share a simple monthly rate — no long-term
+              contract.
+            </p>
+            <a href="#contact" class="btn" style="margin-top: 10px;">Talk about pricing</a>
+          </div>
+          <div class="pricing-side">
+            <p>
+              <strong>Not ready for full AI coverage?</strong><br />
+              Start with after-hours or “backup” mode only, where AnswerlyAI
+              picks up when your lines are busy or staff are away from the desk.
+            </p>
+            <br />
+            <p>
+              Multi-location or call center? Reach out and we’ll design a custom
+              plan based on your stack and call volumes.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ + CONTACT -->
+      <section id="contact">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Let’s make sure you never miss a call</h2>
+            <p class="section-sub">
+              Share a bit about your business and we’ll follow up with a short
+              Loom demo or live walkthrough.
+            </p>
+          </div>
+        </div>
+        <div class="faq-grid">
+          <div>
+            <div class="faq-item">
+              <h3>Is AnswerlyAI replacing our receptionists?</h3>
+              <p>
+                No. Think of it as a teammate that handles repetitive calls and
+                after-hours coverage. Your staff still owns complex situations
+                and the human moments that matter.
+              </p>
+            </div>
+            <div class="faq-item">
+              <h3>Which industries do you support first?</h3>
+              <p>
+                We’re focused on service businesses with steady call volume:
+                medical & dental clinics, salons, spas, trades, and local
+                professional services.
+              </p>
+            </div>
+            <div class="faq-item">
+              <h3>What tools can you integrate with?</h3>
+              <p>
+                In early access we’re focusing on calendar tools, basic CRMs,
+                and popular scheduling platforms. Tell us what you use and we’ll
+                confirm compatibility.
+              </p>
+            </div>
+            <div class="faq-item">
+              <h3>How long does onboarding take?</h3>
+              <p>
+                Most teams go from kickoff to first live calls in 1–2 weeks,
+                depending on complexity of scripts and routing rules.
+              </p>
+            </div>
+          </div>
+
+          <form
+            action="https://example.com/submit"
+            method="post"
+          >
+            <!-- Replace action with Formspree / your backend when ready -->
+            <div style="margin-bottom: 10px;">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Jane Doe" required />
+            </div>
+            <div style="margin-bottom: 10px;">
+              <label for="company">Company</label>
+              <input
+                id="company"
+                name="company"
+                type="text"
+                placeholder="Bright Smiles Dental"
+                required
+              />
+            </div>
+            <div style="margin-bottom: 10px;">
+              <label for="email">Work email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="you@company.com"
+                required
+              />
+            </div>
+            <div style="margin-bottom: 10px;">
+              <label for="size">Monthly call volume (rough estimate)</label>
+              <select id="size" name="size">
+                <option value="">Select an option</option>
+                <option value="under-200">Under 200 calls / month</option>
+                <option value="200-1000">200 – 1,000 calls / month</option>
+                <option value="1000-5000">1,000 – 5,000 calls / month</option>
+                <option value="over-5000">Over 5,000 calls / month</option>
+              </select>
+            </div>
+            <div style="margin-bottom: 10px;">
+              <label for="message">What are you hoping AI can help with?</label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Ex: after-hours coverage, less time rescheduling, cleaner call notes..."
+              ></textarea>
+            </div>
+            <button type="submit" class="btn" style="width: 100%; justify-content: center;">
+              Submit &amp; request a demo
+            </button>
+            <small>
+              By submitting, you agree to hear from AnswerlyAI about product
+              updates and demos. No spam.
+            </small>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <span>© <span id="year"></span> AnswerlyAI. All rights reserved.</span>
+      <span>Built & Founded in Ann Arbor</span>
+    </footer>
+  </div>
+
+  <script>
+    // Current year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  
+    // Typewriter effect for logo (type once, then hide cursor)
+    document.addEventListener("DOMContentLoaded", function () {
+      const textEl = document.getElementById("brandText");
+      const cursorEl = document.querySelector(".cursor");
+      if (!textEl || !cursorEl) return;
+  
+      const fullText = textEl.dataset.text || textEl.textContent.trim();
+      let index = 0;
+      textEl.textContent = "";
+      cursorEl.classList.remove("cursor-active"); // ensure it's not blinking yet
+  
+      function type() {
+        if (index <= fullText.length) {
+          textEl.textContent = fullText.slice(0, index);
+          index++;
+          setTimeout(type, 120); // typing speed
+        } else {
+          // Make sure full text is shown
+          textEl.textContent = fullText;
+  
+          // Briefly blink, then remove the cursor completely
+          cursorEl.classList.add("cursor-active");
+          setTimeout(() => {
+            cursorEl.classList.remove("cursor-active");
+            cursorEl.style.display = "none"; // disappears
+          }, 600); // how long the cursor blinks after finishing
+        }
+      }
+  
+      type();
+    });
+  </script>
+  
