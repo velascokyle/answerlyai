@@ -675,7 +675,33 @@
     }
 
     /* RESPONSIVE */
-    @media (max-width: 880px) {
+   @media (max-width: 880px) {
+  .nav {
+    flex-direction: column;       /* stack logo + buttons */
+    align-items: center;          /* center everything horizontally */
+    padding: 16px 20px;           /* more breathing room */
+    gap: 12px;                    /* space between logo and buttons */
+    border-radius: 20px;
+  }
+
+  .logo {
+    font-size: 1.4rem;            /* slightly larger logo text */
+    letter-spacing: 0.04em;
+    margin-right: 0;              /* cancel any right margin */
+  }
+
+  .nav-cta {
+    width: 100%;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .btn, .btn-outline {
+    flex: 1;                      /* stretch buttons evenly */
+    justify-content: center;
+  }
+}
+
       .nav {
         border-radius: 18px;
         padding-inline: 14px;
